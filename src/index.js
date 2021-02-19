@@ -1,19 +1,19 @@
 module.exports = function check(str, bracketsConfig) {
-  let flag = false;
+  let isRemoved = false;
 
   while (str) {
-    flag = false;
+    isRemoved = false;
 
     for (let brackets of bracketsConfig) {
-      const pair = brackets[0] + brackets[1];
+      const pair = brackets.join('');
 
       if (str.includes(pair)) {
         str = str.replace(pair, '');
-        flag = true;
+        isRemoved = true;
       }
     }
     
-    if (!flag) break;
+    if (!isRemoved) break;
   }
 
   return !str.length;
